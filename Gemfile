@@ -42,4 +42,9 @@ source 'https://rubygems.org'
  group :development do
    gem 'listen', '~> 3.1.5'
  end
+
+ group :development, :test do
+  gem 'rspec-rails', '~> 3.7.1'
+  gem 'rails-controller-testing'
+ end
  
