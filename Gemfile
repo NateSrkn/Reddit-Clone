@@ -40,6 +40,8 @@ source 'https://rubygems.org'
  gem 'bootsnap', '1.3.0'
 
  gem 'bootstrap-sass'
+
+ gem 'pry-rails'
  
  group :development do
    gem 'listen', '~> 3.1.5'
