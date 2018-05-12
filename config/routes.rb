@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'advertisements/index'
+  get 'advertisements/new'
+  get 'advertisements/show'
+  get 'advertisements/create'
   resources :posts
   get 'posts' => 'welcome#posts'
   get 'about' => 'welcome#about'
