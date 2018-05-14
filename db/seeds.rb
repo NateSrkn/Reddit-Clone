@@ -10,7 +10,7 @@
 require 'random_data'
 
 
-15.times do
+16.times do
     # create! creates Posts that raise an error with !
     Post.create!(
         # RandomData will create random strings.
@@ -29,12 +29,17 @@ post = Post.all
     )
 end
 
+Post.find_or_create_by(
+    title: 'Unique Title',
+    body: 'Unique Body'
+)
 
-
-
-Post.find_or_create_by(title: 'Unique Title', body: 'Unique Body')
-Comment.find_or_create_by(body: 'Unique Comment')
+Comment.find_or_create_by(
+    post: post.find_by(body: 'Unique Body'),
+    body: 'Unique Comment'
+)
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
