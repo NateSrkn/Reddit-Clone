@@ -2,21 +2,28 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
 let(:post) { Post.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph) }
-let(:comment) {Comment.create!(body: 'Comment Body', post: post)}
+let(:comment) {Comment.create!(body: RandomData.random_sentence, post: post)}
   describe 'GET #index' do
     it 'returns http success' do
       get :index
       expect(response).to have_http_status(:success)
     end
+
+    it 'assigns [post] to @posts' do
+      get :index
+      expect(assigns(:posts)).to eq([post])
+    end
+
+    it 'assigns [comment] to @comments' do
+      get :index
+      expect(assigns(:comment)).to eq([comment])
+    end
+  
   end
 
-  it 'assigns [post] to @posts' do
-    get :index
-    
-    expect(assigns(:posts)).to eq([post])
-  end
 
     describe 'GET show' do
+      
       it 'returns http success' do
         get :show, params: { id: post.id }
         expect(response).to have_http_status(:success)
@@ -52,7 +59,8 @@ let(:comment) {Comment.create!(body: 'Comment Body', post: post)}
 
     describe 'POST create' do
       it 'increases the number of Post by 1' do
-        expect { post :create, params: { post: { title: RandomData.random_sentence, body: RandomData.random_paragraph}}}.to change(Post,:count).by(1)
+        post :create, params: { post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}}
+        expect{:post}.to change(Post,:count).by(1)
       end
 
       it 'assigns the new post to @post' do

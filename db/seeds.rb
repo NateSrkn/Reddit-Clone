@@ -20,6 +20,7 @@ require 'random_data'
 end
 
 post = Post.all 
+question = Question.all
 
 30.times do 
 
@@ -37,6 +38,15 @@ end
     )
 end
 
+10.times do
+    Question.create!(
+        title: RandomData.random_word,
+        body: RandomData.random_sentence,
+        resolved: false
+    )
+end
+
+
 Post.find_or_create_by(
     title: 'Unique Title',
     body: 'Unique Body'
@@ -51,4 +61,6 @@ puts "Seed finished"
 puts "#{Advertisement.count} advertisements created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Question.count} questions created"
+
 

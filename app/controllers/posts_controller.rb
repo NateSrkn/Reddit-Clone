@@ -2,28 +2,23 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all
-    @comment = Comment.all
-    @posts.each_with_index do |post, index|
-      if index % 5 == 0
-        post.title = 'SPAM'
-      end
-    end
+    #@comment = Comment.all
   end
 
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.find(params[:id])
+    #@comment = Comment.find(params[:id])
   end
 
   def new
     @post = Post.new
-    @comment = Comment.new
+    #@comment = Comment.new
   end
 
   def create 
     @post = Post.new
-    @comment = Comment.new
-    @comment.body = params[:comment][:body]
+    #@comment = Comment.new
+    #@comment.body = params[:comment][:body]
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
 
