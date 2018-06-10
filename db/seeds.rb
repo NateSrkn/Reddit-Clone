@@ -9,18 +9,26 @@
 
 require 'random_data'
 
+post = Post.all 
+question = Question.all
+topics = Topic.all
 
-16.times do
+15.times do 
+    Topic.create!(
+        name: RandomData.random_sentence,
+        description: RandomData.random_paragraph
+    )
+end
+
+50.times do
     # create! creates Posts that raise an error with !
     Post.create!(
         # RandomData will create random strings.
+        topic: topics.sample,
         title: RandomData.random_sentence,
         body: RandomData.random_paragraph
     )
 end
-
-post = Post.all 
-question = Question.all
 
 30.times do 
 
@@ -30,19 +38,10 @@ question = Question.all
     )
 end
 
-15.times do 
-    Advertisement.create!(
-        title: RandomData.random_word,
-        copy: RandomData.random_paragraph,
-        price: rand(100...1000)
-    )
-end
-
 10.times do
     Question.create!(
         title: RandomData.random_word,
-        body: RandomData.random_sentence,
-        resolved: false
+        body: RandomData.random_sentence
     )
 end
 
@@ -58,7 +57,7 @@ Comment.find_or_create_by(
 )
 
 puts "Seed finished"
-puts "#{Advertisement.count} advertisements created"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Question.count} questions created"
