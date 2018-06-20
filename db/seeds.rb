@@ -10,6 +10,7 @@
 require 'random_data'
 
 post = Post.all 
+sponsored_post = SponsoredPost.all
 question = Question.all
 topics = Topic.all
 
@@ -38,6 +39,15 @@ end
     )
 end
 
+50.times do 
+    SponsoredPost.create!(
+        topic: topics.sample,
+        title: "Sponsored",
+        body: RandomData.random_paragraph,
+        price: rand(100...500)
+    )
+end
+
 10.times do
     Question.create!(
         title: RandomData.random_word,
@@ -59,6 +69,7 @@ Comment.find_or_create_by(
 puts "Seed finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
+puts "#{SponsoredPost.count} sponsored posts created"
 puts "#{Comment.count} comments created"
 puts "#{Question.count} questions created"
 
