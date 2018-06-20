@@ -40,6 +40,7 @@ source 'https://rubygems.org'
  gem 'bootsnap', '1.3.0'
 
  gem 'bootstrap-sass'
+ gem 'bcrypt'
 
  gem 'pry-rails'
  
