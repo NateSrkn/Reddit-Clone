@@ -38,7 +38,6 @@ source 'https://rubygems.org'
  gem 'thor', '0.20.0'
 
  gem 'bootsnap', '1.3.0'
-
  gem 'bootstrap-sass'
  gem 'bcrypt'
 
