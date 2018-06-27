@@ -9,10 +9,20 @@
 
 require 'random_data'
 
+users = User.all
 post = Post.all 
 sponsored_post = SponsoredPost.all
 question = Question.all
 topics = Topic.all
+
+
+5.times do 
+    User.create!(
+        name: RandomData.random_name,
+        email: RandomData.random_email,
+        password: RandomData.random_sentence
+    )
+end
 
 15.times do 
     Topic.create!(
@@ -25,6 +35,7 @@ end
     # create! creates Posts that raise an error with !
     Post.create!(
         # RandomData will create random strings.
+        user: users.sample,
         topic: topics.sample,
         title: RandomData.random_sentence,
         body: RandomData.random_paragraph
@@ -66,7 +77,15 @@ Comment.find_or_create_by(
     body: 'Unique Comment'
 )
 
+user = User.first
+user.update_attributes!(
+    name: 'Nathan Sorkin',
+    email: 'NateSrkn@gmail.com',
+    password: 'password'
+)
+
 puts "Seed finished"
+puts "#{User.count} users created" 
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{SponsoredPost.count} sponsored posts created"
