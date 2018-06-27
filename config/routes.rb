@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :posts
   resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   post 'users/new/confirm' => 'users#confirm'
 
   resources :topics do
