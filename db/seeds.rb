@@ -42,9 +42,10 @@ end
     )
 end
 
-30.times do 
+100.times do 
 
     Comment.create!(
+        user: users.sample,
         post: post.sample, # picks a random post to comment on
         body: RandomData.random_paragraph
     )
