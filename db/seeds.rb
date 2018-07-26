@@ -77,11 +77,24 @@ Comment.find_or_create_by(
     body: 'Unique Comment'
 )
 
-user = User.first
-user.update_attributes!(
-    name: 'Nathan Sorkin',
-    email: 'NateSrkn@gmail.com',
+admin = User.create!(
+    name: 'Admin User',
+    email: 'Admin@email.com',
+    password: 'password',
+    role: 'admin'
+)
+
+member = User.create!(
+    name: 'Member User',
+    email: 'Member@email.com',
     password: 'password'
+)
+
+moderator = User.create!(
+    name: 'Moderator User',
+    email: 'Moderator@email.com',
+    password: 'password',
+    role: 'moderator'
 )
 
 puts "Seed finished"
