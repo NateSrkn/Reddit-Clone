@@ -1,0 +1,4 @@
+<%= @post.title %>
+    <small>
+        submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
+    </small>   
