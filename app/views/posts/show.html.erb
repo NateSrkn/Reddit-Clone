@@ -1,6 +1,5 @@
-<h1>
-    <%= render @post %> 
-</h1>
+
+<%= render @post %> 
 <div class="row">
     <div class="col-md-8">
         <p><%= @post.body %>
@@ -16,7 +15,18 @@
     <% if user_is_authorized_for_post?(@post) %>
     <div class="col-md-4">
         <%= link_to 'Edit', edit_topic_post_path(@post), class: 'btn btn-success'%>
-        <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, class: 'btn btn-success'%>
+        <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, class: 'btn btn-danger'%>
     </div>
     <% end %>
+    <div class="col-md-4">
+        <h3>
+            <%= pluralize(@post.points, 'point') %>
+            <div>
+                <small>
+                    <%= pluralize(@post.up_votes, 'up vote') %>
+                    <%= pluralize(@post.down_votes, 'down vote') %>
+                </small>
+            </div>
+        </h3>
+    </div>
 </div>
