@@ -8,6 +8,11 @@
         <%= link_to 'Delete Post', [@post.topic, @post], method: :delete, class: 'btn btn-danger'%>
     </div>
     <% end %>
+
+    <% if current_user.try(:moderator?) %>
+        <%= link_to 'Edit', edit_topic_post_path(@post), class: 'btn btn-success'%>
+    <% end %>
+
     <div class="col-md-4">
         <h3>
             <%= pluralize(@post.points, 'point') %>
@@ -20,6 +25,10 @@
         </h3>
         <% if current_user %>
             <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+        <% end %>
+
+        <% if current_user.try(:moderator?) %>
+            <h1>YOU ARE A MODERATOR</h1>
         <% end %>
     </div>
 </div>
