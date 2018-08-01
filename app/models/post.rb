@@ -3,6 +3,7 @@ belongs_to :topic
    belongs_to :user
    has_many :comments, dependent: :destroy
    has_many :votes, dependent: :destroy
+   has_many :favorites, dependent: :destroy
 
    after_create :create_vote
    default_scope { order( 'rank DESC' ) }
