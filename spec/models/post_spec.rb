@@ -2,14 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   # Creates new instance of the Post class
-  let(:name) { RandomData.random_sentence }
-  let(:description) { RandomData.random_paragraph }
-  let(:title) { RandomData.random_sentence }
-  let(:body) { RandomData.random_paragraph }
 
-  let(:topic) { Topic.create!(name:name, description: description)}
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld" )}
-  let(:post) {topic.posts.create!(title: title, body: body, user: user)}
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
 
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
@@ -29,7 +25,7 @@ RSpec.describe Post, type: :model do
   # Testing to see whether post has title and body.
   describe "attributes" do 
     it "has title, body and user attributes" do
-      expect(post).to have_attributes(title: title, body: body, user: user)
+      expect(post).to have_attributes(title: post.title, body: post.body)
     end
   end
 
