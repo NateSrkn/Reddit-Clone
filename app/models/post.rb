@@ -5,7 +5,7 @@ belongs_to :topic
    has_many :votes, dependent: :destroy
    has_many :favorites, dependent: :destroy
 
-   after_create :create_vote
+   after_create :user_created_steps
    default_scope { order( 'rank DESC' ) }
    scope :ordered_by_title, -> { order( 'created_at DESC' )}
    scope :ordered_by_reverse_created_at, -> { order( 'created_at ASC' ) }
@@ -35,7 +35,9 @@ belongs_to :topic
 
    private
 
-   def create_vote
+   def user_created_steps
         user.votes.create(value: 1, post: self)
+        user.favorites.create(post: self, user: self.user)
+        FavoriteMailer.new_post(self).deliver_now
    end
 end

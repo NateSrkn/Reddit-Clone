@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <h1>Congrats on your post - "<%= @post.title %>"</h1>
+    <p>
+        <%= link_to "View Post on site", topic_post_url(@post.topic, @post) %>
+    </p>
+</body>
+</html>
