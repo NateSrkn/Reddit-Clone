@@ -20,7 +20,7 @@
       <% if current_user %>
         <%= image_tag  avatar_url(current_user), class: 'gravatar-id' %>
         <li class="pull-right">
-          <%= current_user.name %> 
+          <%= link_to current_user.name, user_path(current_user) %>
             <br>
           <%= link_to "Sign Out", session_path(current_user), method: :delete %>
         </li>
