@@ -14,6 +14,7 @@
                 <small>
                     <%= pluralize(@user.posts.count, 'post') %>
                     <%= pluralize(@user.comments.count, 'comment' )%>
+                    <%= pluralize(@user.favorites.count, 'favorites') %>
                 </small>
             </div>
         </div>
@@ -21,7 +22,17 @@
 </div>
 
 <h2>Posts</h2>
-<%= render @user.posts %>
+<% if @user.posts.count > 0 %>
+    <%= render @user.posts %>
+<% else %>
+    <%= @user.name %> has not submitted any posts yet
+<% end %>
 
 <h2>Comments</h2>
-<%= render @user.comments %>
+<% if @user.comments.count > 0 %>
+    <%= render @user.comments %>
+<% else %>
+    <%= @user.name %> has not submitted any comments yet
+<% end %>
+
+<!-- missing favorites render >
