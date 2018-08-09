@@ -30,7 +30,11 @@ class User < ApplicationRecord
     end
 
     def favorite_for(post)
-            favorites.where(post_id: post.id).first 
+        favorites.where(post_id: post.id).first 
+    end
+
+    def get_favorites()
+        Post.find(self.favorites.map{ |f| f.post_id })
     end
 
     def avatar_url(size)

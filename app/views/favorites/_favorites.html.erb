@@ -1,0 +1,22 @@
+<div class="media">
+<div class="media-body">
+    <h4 class="media-heading">
+        <%= favorite.title %>
+    </h4>
+    <small>
+        <%= favorite.comments.count %> Comments
+    <br />
+        <%= favorite.points %> Score
+    <br />
+    <h5 class="media-heading">
+       <% avatar_url = favorite.user.avatar_url(32) %>
+            <% if avatar_url %>
+                <div class="media-left">
+                    <%= image_tag avatar_url, class: 'media-object' %>
+                </div>
+            <% end %>
+    </h5>
+    </small>
+</div>
+    
+</div>

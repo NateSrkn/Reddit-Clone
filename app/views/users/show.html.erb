@@ -35,4 +35,12 @@
     <%= @user.name %> has not submitted any comments yet
 <% end %>
 
-<%= render @user.favorites %>
+
+<h2>Favorites</h2>
+<% if @user.favorites.count > 0 %>
+    <% @user.get_favorites.each do |favorite| %>
+        <%= render partial: 'favorites/favorites', locals: { favorite: favorite } %>
+    <% end %>
+<% else %>
+    <%= @user.name %> has no favorites
+<% end %>
