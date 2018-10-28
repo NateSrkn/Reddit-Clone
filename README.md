@@ -1,7 +1,7 @@
 
-# Bloccit: a Reddit replica using Rails.
+# A reddit clone built using Rails
 
-Bloccit was created to test the power of Rails.
+This project was created to test the power of Rails.
 Throughout this project, I kept wanting to add more and more features.
 
 
